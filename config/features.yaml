@@ -1,0 +1,64 @@
+n_features: 14
+
+features:
+  - name: entropy
+    index: 0
+    description: "Normalized attention entropy"
+    range: [0, 1]
+  - name: max_attention
+    index: 1
+    description: "Mean of per-position max attention weight"
+    range: [0, 1]
+  - name: top5_concentration
+    index: 2
+    description: "Mean of top-5 attention weight sum"
+    range: [0, 1]
+  - name: bos_sink_score
+    index: 3
+    description: "Mean attention to position 0"
+    range: [0, 1]
+  - name: previous_token
+    index: 4
+    description: "Mean attention to position i-1"
+    range: [0, 1]
+  - name: self_attention
+    index: 5
+    description: "Mean attention to position i (diagonal)"
+    range: [0, 1]
+  - name: mean_distance
+    index: 6
+    description: "Normalized mean attention-weighted distance"
+    range: [0, 1]
+  - name: distance_std
+    index: 7
+    description: "Normalized std of attention-weighted distances"
+    range: [0, 1]
+  - name: local_window
+    index: 8
+    description: "Mean attention within local window (w=5)"
+    range: [0, 1]
+  - name: induction_score
+    index: 9
+    description: "Attention to token after previous occurrence of predecessor"
+    range: [0, 1]
+  - name: copy_score
+    index: 10
+    description: "Attention to previous occurrences of same token"
+    range: [0, 1]
+  - name: kurtosis
+    index: 11
+    description: "Sigmoid-scaled excess kurtosis"
+    range: [0, 1]
+  - name: positional_consistency
+    index: 12
+    description: "Mean pairwise correlation of relative attention profiles"
+    range: [0, 1]
+  - name: causal_decay_rate
+    index: 13
+    description: "1 - exp(-lambda) from exponential fit"
+    range: [0, 1]
+
+normalization:
+  method: minmax  # Applied per-feature across all 256 heads
+  clip: true
+  clip_range: [0.0, 1.0]

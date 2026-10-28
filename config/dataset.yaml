@@ -1,0 +1,57 @@
+max_seq_len: 512
+total_prompts: 600
+
+categories:
+  general_text:
+    source: "allenai/c4"
+    subset: "en"
+    split: "validation"
+    n: 150
+    description: "Broad web text baseline"
+
+  reasoning:
+    source: "Rowan/hellaswag"
+    split: "validation"
+    n: 100
+    description: "Commonsense reasoning"
+
+  code:
+    source: "openai/openai_humaneval"
+    split: "test"
+    n: 50
+    description: "Programming patterns"
+
+  factual:
+    source: "mandarjoshi/trivia_qa"
+    subset: "rc.nocontext"
+    split: "validation"
+    n: 100
+    description: "Factual retrieval"
+
+  induction_friendly:
+    source: "synthetic"
+    generator: "repeated_bigrams"
+    n: 50
+    description: "Synthetic repeated bigrams to activate induction heads"
+
+  long_range:
+    source: "synthetic"
+    generator: "facts_and_questions"
+    n: 50
+    description: "Synthetic facts + questions for long-range attention"
+
+  safety_relevant:
+    source: "truthfulqa/truthful_qa"
+    subset: "generation"
+    split: "validation"
+    n: 50
+    description: "Relevant for RD3 extension"
+
+  mathematical:
+    source: "openai/gsm8k"
+    subset: "main"
+    split: "test"
+    n: 50
+    description: "Arithmetic reasoning"
+
+batch_size: 4

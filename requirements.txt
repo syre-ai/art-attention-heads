@@ -1,0 +1,9 @@
+torch>=2.1
+transformers>=4.45
+datasets
+artlib
+numpy
+scipy
+scikit-learn
+matplotlib
+pyyaml

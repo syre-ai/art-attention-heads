@@ -1,0 +1,15 @@
+model_id: "allenai/OLMo-2-0425-1B"
+dtype: float16
+attn_implementation: eager  # Critical: flash/sdpa discards attention weights
+max_seq_len: 512
+n_layers: 16
+n_heads: 16
+hidden_dim: 2048
+head_dim: 128
+
+# Additional checkpoints for RD3 extension
+checkpoints:
+  base: "allenai/OLMo-2-0425-1B"
+  sft: "allenai/OLMo-2-0425-1B-SFT"
+  dpo: "allenai/OLMo-2-0425-1B-DPO"
+  instruct: "allenai/OLMo-2-0425-1B-Instruct"
